@@ -130,26 +130,27 @@ SILENCE_TRIGGER_SEC = 1.0
 ## How it works
 
 ```
-┌─────────────┐     ┌───────────┐     ┌─────────────┐     ┌───────────────┐
-│  WASAPI      │────>│  Resample  │────>│  Silero VAD  │────>│  Buffer until │
-│  Loopback    │     │  to 16kHz  │     │  Speech?     │     │  pause/max    │
-│  (48kHz/8ch) │     │  Mono      │     │              │     │               │
-└─────────────┘     └───────────┘     └─────────────┘     └───────┬───────┘
-                                                                   │
-                                                                   v
-                                                          ┌───────────────┐
-                                                          │  Whisper       │
-                                                          │  large-v3      │
-                                                          │  translate     │
-                                                          │  -> English    │
-                                                          └───────┬───────┘
-                                                                   │
-                                                                   v
-                                                          ┌───────────────┐
-                                                          │  [SV 97%->EN] │
-                                                          │  Console out   │
-                                                          └───────────────┘
+┌──────────────┐    ┌────────────┐    ┌────────────┐    ┌──────────────┐
+│ WASAPI       │───>│ Resample   │───>│ Silero VAD │───>│ Buffer until │
+│ Loopback     │    │ to 16kHz   │    │ Speech?    │    │ pause / max  │
+│ (48kHz/8ch)  │    │ Mono       │    │            │    │              │
+└──────────────┘    └────────────┘    └────────────┘    └──────┬───────┘
+                                                               │
+                                                               v
+                                                        ┌──────────────┐
+                                                        │ Whisper      │
+                                                        │ large-v3     │
+                                                        │ translate    │
+                                                        │ -> English   │
+                                                        └──────┬───────┘
+                                                               │
+                                                               v
+                                                        ┌──────────────┐
+                                                        │ [SV 97%->EN] │
+                                                        │ Console out  │
+                                                        └──────────────┘
 ```
+
 
 ## Tech stack
 
