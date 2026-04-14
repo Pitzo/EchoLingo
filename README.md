@@ -41,7 +41,7 @@ EchoLingo captures your PC's audio output via WASAPI loopback (no virtual cables
 
 ```bash
 # Clone the repo
-git clone https://github.com/yourusername/echolingo.git
+git clone https://github.com/pitzo/echolingo.git
 cd echolingo
 
 # Install dependencies (auto-pulls CUDA PyTorch)
