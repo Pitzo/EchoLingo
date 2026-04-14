@@ -1,0 +1,6 @@
+PyAudioWPatch
+faster-whisper
+numpy
+--extra-index-url https://download.pytorch.org/whl/cu124
+torch
+torchaudio
