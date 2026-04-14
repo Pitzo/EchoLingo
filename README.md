@@ -61,7 +61,7 @@ pip install PyAudioWPatch faster-whisper numpy
 ## Usage
 
 ```bash
-python translate.py
+python EchoLingo.py
 ```
 
 That's it. EchoLingo will:
@@ -100,7 +100,7 @@ Press `Ctrl+C` to stop.
 
 ## Configuration
 
-All settings are at the top of `translate.py`:
+All settings are at the top of `EchoLingo.py`:
 
 | Setting | Default (GPU) | Description |
 |---|---|---|
