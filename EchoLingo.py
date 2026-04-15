@@ -47,6 +47,7 @@ MAX_SEGMENT_SEC = 12.0             # more context = much better translation qual
 MIN_AUDIO_SEC = 0.5                # ignore segments shorter than this
 BEAM_SIZE = 10                     # max quality beam search
 MAX_QUEUE_LAG = 120                # allow more buffering since processing is heavier
+MIN_CONFIDENCE = 0.0               # language detection confidence filter (0.0 = show all, 0.5 = 50%+, etc.)
 
 # ── Globals ──────────────────────────────────────────────────────────────────
 
@@ -254,6 +255,10 @@ def _flush(model: WhisperModel, buf: list[np.ndarray], dur: float):
         lang = info.language.upper()
         prob = info.language_probability
 
+        if prob < MIN_CONFIDENCE:
+            log(f"  [Skipped] {lang} {prob:.0%} below {MIN_CONFIDENCE:.0%} threshold")
+            return
+
         _prev_text = text
 
         if info.language == "en":
@@ -275,6 +280,7 @@ def main():
     log(f"  Whisper : {WHISPER_MODEL}  on  {DEVICE}  ({COMPUTE_TYPE})")
     log(f"  Latency : flush after {SILENCE_TRIGGER_SEC}s silence, max {MAX_SEGMENT_SEC}s segment")
     log(f"  Beam    : {BEAM_SIZE}  (1=fastest, 5=best quality)")
+    log(f"  Filter  : {MIN_CONFIDENCE:.0%} min confidence  (0%=show all)")
     log("")
 
     log("[1/3] Loading Whisper...")
