@@ -110,6 +110,7 @@ All settings are at the top of `EchoLingo.py`:
 | `SILENCE_TRIGGER_SEC` | `1.0` | Seconds of silence before translating buffered speech. |
 | `VAD_THRESHOLD` | `0.35` | Speech detection sensitivity (0.0–1.0). Lower = more sensitive. |
 | `MAX_QUEUE_LAG` | `120` | Max queued chunks before dropping old audio to stay live. |
+| `MIN_CONFIDENCE` | `0.0` | Language detection confidence filter (0.0 = show all, 0.5 = 50%+, 0.8 = strict). |
 
 ### Tuning for speed vs accuracy
 
